@@ -11,6 +11,7 @@
 ```
 
 - Complexity **O(?)**
+
 - **Monotonic behavior**
 
 ![image](https://user-images.githubusercontent.com/40351413/113416819-5beb0700-93c2-11eb-91af-1181472a1deb.png)
@@ -35,8 +36,8 @@
     int left = 0, right = n - 1;
 
     while (left <= right) {
-        int mid = (left + right) / 2;
-//        int mid = left + (right - left) / 2; // Prevent overflow
+        // int mid = (left + right) / 2;
+        int mid = left + (right - left) / 2; // Prevent overflow
 
         if (arr[mid] < target)
             left = mid + 1;
@@ -130,8 +131,6 @@
 
 ```
 
-() :
-
 ### lower_bound
   
 - returns an iterator pointing to the first element greater than or equal **‘x’**
@@ -141,7 +140,9 @@
     int x;
     cin >> x;
     auto it = lower_bound(b.begin(), b.end(), x);
-    if (it == b.end()) {
+    auto index = it - b.begin();
+
+    if (it != b.end()) {
         cout << *it << endl;
     } else {
         cout << "Not found\n";
@@ -159,7 +160,7 @@
     cin >> x;
 
     auto it = upper_bound(b.begin(), b.end(), x);
-    if (it == b.end()) {
+    if (it != b.end()) {
         cout << *it << endl;
     } else {
         cout << "Not found\n";

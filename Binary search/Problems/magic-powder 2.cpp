@@ -37,11 +37,12 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> have[i];
 
-    ll left = 0, right = 2e9 + 1, res = 0;
+    ll left = 0, right = 2e9, res = 0;
 
     while (left <= right)
     {
-        ll mid = (left + right) / 2;
+        // ll mid = (left + right) / 2;
+        ll mid = left + (right - left) / 2;
         if (ok(mid))
         {
             left = mid + 1;
