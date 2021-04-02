@@ -1,4 +1,4 @@
-# 🏃‍♂️ Brute force
+# 🔨 Brute force
 > What we have seen is a technique called brute force, in which we try all the combinations
 
 ## General Checks:
