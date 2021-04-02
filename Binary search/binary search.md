@@ -104,12 +104,6 @@
 
 ```
 
-## <font color='08FAFA'>Problems</font>
-
-- Magic powder - 1 (brute force)
-- Magic powder - 1 (binary search)
-- Magic powder - 2 (binary search)
-
 ## <font color='08FAFA'>Built-in functions (STL)</font>
 
 > CPP provides a built in function in STL (Standard template library)
@@ -167,3 +161,9 @@
     }
 
 ```
+
+## <font color='08FAFA'>Problems</font>
+
+- Magic powder - 1 (brute force) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%201%20-%20BF.cpp)
+- [Magic powder - 1](https://codeforces.com/contest/670/problem/D1) (binary search) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%201%20-%20BS.cpp)
+- [Magic powder - 2](https://codeforces.com/contest/670/problem/D2) (binary search) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%202.cpp)
