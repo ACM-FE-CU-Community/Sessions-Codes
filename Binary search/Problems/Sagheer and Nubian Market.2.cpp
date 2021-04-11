@@ -27,6 +27,8 @@ pair<bool, ll> ok(int noOfSouvs)
     return {sum <= s, sum};
 }
 
+// Link: https://codeforces.com/problemset/problem/812/C
+
 int main()
 {
     IO;
