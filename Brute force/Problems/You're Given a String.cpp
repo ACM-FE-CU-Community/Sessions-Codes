@@ -22,14 +22,14 @@ int main() {
     for (int j = i; j < n; j++) {
       t += s[j];
 
-      int firstPos = -1, lastPos = -1;
+      int firstOcc = -1, lastOcc = -1;
       for (int k = 0; k + t.size() <= n; k++)
         if (s.substr(k, t.size()) == t) {
-          if (firstPos == -1) firstPos = k;
-          lastPos = k;
+          if (firstOcc == -1) firstOcc = k;
+          lastOcc = k;
         }
 
-      if (firstPos != lastPos) ans = max(ans, (int)t.size());
+      if (firstOcc != lastOcc) ans = max(ans, (int)t.size());
     }
   }
 
