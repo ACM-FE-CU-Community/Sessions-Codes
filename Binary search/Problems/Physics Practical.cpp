@@ -1,8 +1,5 @@
 // Author : Abdallah Hemdan
 // For Hassanosama, ICPC next year ISA.
-
-// Problem: https://codeforces.com/group/zvsr84He8w/contest/322905/problem/G
-
 #include <bits/stdc++.h>
 
 #define endl '\n'
@@ -38,40 +35,28 @@ int comp_double(double a, double b) {
   return (a < b) ? -1 : 1;
 }
 
-const int N = 1e5 + 15;
-int sm[N];
-
 int main() {
   IO;
 #ifndef ONLINE_JUDGE
   freopen("In.txt", "r", stdin);
   freopen("Out.txt", "w", stdout);
 #else
-  // freopen("input.in","r",stdin);
-// freopen("output.out","w",stdout);
+  freopen("input.txt", "r", stdin);
+  freopen("output.txt", "w", stdout);
 #endif
-  ll n, d;
-  cin >> n >> d;
-  vector<pair<ll, ll>> a(n);
-  vector<ll> b(n);
-
-  for (auto &i :a) cin >> i.first >> i.second;
+  ll n;
+  cin >> n;
+  vector<int> a(n);
+  for (auto &i : a) cin >> i;
 
   sort(all(a));
-  for (int i = 1; i < n; ++i) {
-    a[i].second += a[i - 1].second;
-  }
 
-  ll mx = LLONG_MIN;
+  int mx = 0;
   for (int i = 0; i < n; ++i) {
-    int lst = lower_bound(all(a), make_pair(a[i].first + d, 0LL)) - a.begin() - 1;
+    int idx = upper_bound(all(a), 2 * a[i]) - a.begin();
 
-    if (i == 0) {
-      mx = max(mx, a[lst].second);
-    } else {
-      mx = max(mx, a[lst].second - a[i - 1].second);
-    }
+    mx = max(mx, idx - i);
   }
 
-  cout << mx << endl;
+  cout << n - mx << endl;
 }
