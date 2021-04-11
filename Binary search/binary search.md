@@ -11,6 +11,7 @@
 ```
 
 - Complexity **O(?)**
+
 - **Monotonic behavior**
 
 ![image](https://user-images.githubusercontent.com/40351413/113416819-5beb0700-93c2-11eb-91af-1181472a1deb.png)
@@ -35,8 +36,8 @@
     int left = 0, right = n - 1;
 
     while (left <= right) {
-        int mid = (left + right) / 2;
-//        int mid = left + (right - left) / 2; // Prevent overflow
+        // int mid = (left + right) / 2;
+        int mid = left + (right - left) / 2; // Prevent overflow
 
         if (arr[mid] < target)
             left = mid + 1;
@@ -103,12 +104,6 @@
 
 ```
 
-## <font color='08FAFA'>Problems</font>
-
-- Magic powder - 1 (brute force)
-- Magic powder - 1 (binary search)
-- Magic powder - 2 (binary search)
-
 ## <font color='08FAFA'>Built-in functions (STL)</font>
 
 > CPP provides a built in function in STL (Standard template library)
@@ -130,8 +125,6 @@
 
 ```
 
-() :
-
 ### lower_bound
   
 - returns an iterator pointing to the first element greater than or equal **‘x’**
@@ -141,7 +134,9 @@
     int x;
     cin >> x;
     auto it = lower_bound(b.begin(), b.end(), x);
-    if (it == b.end()) {
+    auto index = it - b.begin();
+
+    if (it != b.end()) {
         cout << *it << endl;
     } else {
         cout << "Not found\n";
@@ -159,10 +154,16 @@
     cin >> x;
 
     auto it = upper_bound(b.begin(), b.end(), x);
-    if (it == b.end()) {
+    if (it != b.end()) {
         cout << *it << endl;
     } else {
         cout << "Not found\n";
     }
 
 ```
+
+## <font color='08FAFA'>Problems</font>
+
+- Magic powder - 1 (brute force) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%201%20-%20BF.cpp)
+- [Magic powder - 1](https://codeforces.com/contest/670/problem/D1) (binary search) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%201%20-%20BS.cpp)
+- [Magic powder - 2](https://codeforces.com/contest/670/problem/D2) (binary search) - [Solution](https://github.com/ACM-FE-CU-Community/Sessions-Codes/blob/main/Binary%20search/Problems/magic-powder%202.cpp)
