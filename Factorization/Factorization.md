@@ -9,6 +9,7 @@
   - [Count divisors](#count-divisors)
     - [Count divisors for one number](#count-divisors-for-one-number)
     - [Count divisors for all numbers from 1 to n](#count-divisors-for-all-numbers-from-1-to-n)
+      - [Backward thinking](#backward-thinking)
   - [Problems](#problems)
     - [Multiplication Table](#multiplication-table)
       - [Brute force solution](#brute-force-solution)
@@ -79,7 +80,8 @@ int countDivisors(int n) // O(sqrt(n))
         if (n % i == 0)
             cnt += 2;
     
-    if (i * i == n) cnt--;
+    // 25 => 5 * 5, 36 = 6 * 6, ...etc
+    if (isPerfectSquare(n)) cnt--;
     return cnt;
 }
 ```
@@ -97,13 +99,15 @@ void divCountAllBruteForce(int n) // O(n * Sqrt(n))
 }
 ```
 
+#### Backward thinking
 ```cpp
-2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ....
+1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ....
 
-2 divides 4, 6, 8, 10 ... n
-3 divides 6, 9, 12, 15 ... n
-4 divides 8, 12, 16, 20 ... n
-5 divides 10, 15, 20, 25 ... n
+1 divides 1, 2, 3, 4, 5 ... n
+2 divides 2, 4, 6, 8, 10 ... n
+3 divides 3, 6, 9, 12, 15 ... n
+4 divides 4, 8, 12, 16, 20 ... n
+5 divides 5, 10, 15, 20, 25 ... n
 
 Complexity = n/1 + n/2 + n/3 + .... n/n
 => Harmonic series => n log(n)
@@ -116,8 +120,7 @@ void divCountAllOptimized(int n)
     vector<int> divisors(n + 1);
     for (int i = 1; i <= n; i++)
     {
-        divisors[i]++; // Divisor of myself
-        for (int j = 2 * i; j <= n; j += i)
+        for (int j = i; j <= n; j += i)
             divisors[j]++;
     }
 }
@@ -130,6 +133,9 @@ void divCountAllOptimized(int n)
 ### Multiplication Table
 
 Link: <https://codeforces.com/problemset/problem/577/A>
+
+![times-table](https://user-images.githubusercontent.com/40190772/115963677-ade5ff00-a520-11eb-8f3c-432eee5ad139.png)
+
 
 #### Brute force solution
 
@@ -159,7 +165,7 @@ void MultiplicationTableOptimized()
     int cnt = 0;
 
     for(auto divisor : divisors) {
-        if (divisor <= n && (x / divisor) < n)
+        if (divisor <= n && (x / divisor) <= n)
             cnt++;
     }
 
