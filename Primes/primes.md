@@ -11,7 +11,7 @@
 
 ### Definition
 
-- N is a primes IFF it divides only by 1 and N
+- N is a prime IFF it divides only by 1 and N
 
 ### Primality test
 
@@ -48,7 +48,7 @@ bool isPrime(int n) // O(n)
 ```
 
 ```cpp
-bool isPrime_sqrt(int n) // O(sqrt(n))
+bool isPrimeSqrt(int n) // O(sqrt(n))
 {
     if (n < 2) return false;
 
@@ -69,7 +69,7 @@ bool isPrime_sqrt(int n) // O(sqrt(n))
 - **Any even number isn't a prime except *2***
 
 ```cpp
-bool isPrime_sqrt2(int n) // O(sqrt(n))
+bool isPrimeSqrt2(int n) // O(sqrt(n))
 {
     if (n == 2) return true;
     if (n < 2 || n % 2 == 0) return false;
@@ -87,7 +87,7 @@ bool isPrime_sqrt2(int n) // O(sqrt(n))
 
 ```cpp
 // brute force
-int Count_Primes(int n) // O(n * sqrt(n) )
+int CountPrimes(int n) // O(n * sqrt(n) )
 {
     int cnt = 0;
     for (int i = 1; i <= n; ++i)
@@ -155,7 +155,7 @@ int CountPrimesSeive(int n) // O(n log(log(n)))
 ```
 
 ```cpp
-vector<int> Prime_Divisors(int n) // sqrt(n) or less
+vector<int> PrimeDivisors(int n) // sqrt(n) or less
 {
     vector<int> divisors;
     for (int i = 2; i * i <= n; i++)
@@ -187,26 +187,26 @@ vector<int> Prime_Divisors(int n) // sqrt(n) or less
    - Count numbers that has exactly two distinct prime divisors from 1 to n
 
 ```cpp
-int Almost_Prime() // Forward Thinking
+int AlmostPrime() // Forward Thinking
 {
     int n, ans = 0;
     cin >> n;
     for (int i = 1; i <= n; i++)
     {
-        int Pdivs = 0, tempi = i;
+        int primeDivs = 0, tempi = i;
 
         for (int j = 2; j * j <= tempi; j++)
         {
-            if (tempi % j == 0) Pdivs++;
+            if (tempi % j == 0) primeDivs++;
 
             while (tempi % j == 0)
             {
                 tempi /= j;
             }
         }
-        if (tempi != 1) Pdivs++;
+        if (tempi != 1) primeDivs++;
 
-        ans += (Pdivs == 2);
+        ans += (primeDivs == 2);
     }
     return ans;
 }
@@ -216,7 +216,7 @@ int Almost_Prime() // Forward Thinking
 - We can use sieve with small modification but HOW ?
 
 ```cpp
-int AlmostPrime_Seive(int n) // Backward Thinking
+int AlmostPrimeSeive(int n) // Backward Thinking
 {
     vector<bool> primes(n + 1, 1);
     vector<int> no_primes(n + 1);
@@ -243,7 +243,8 @@ int AlmostPrime_Seive(int n) // Backward Thinking
 
 2. [Duff in Love](https://codeforces.com/problemset/problem/588/B)
 
-   - Find max divisor of ***n*** that hasn't (perfect square number - 1, 4, 9, 16, 25) divisor
+   - Find max divisor of ***n*** that hasn't a perfect square divisor
+   - Perfect square numbers: 1, 4, 9, 16, 25, ...
 
 ```cpp
 bool isPerfectSquare(long double x)
@@ -252,37 +253,25 @@ bool isPerfectSquare(long double x)
     return ((sr - floor(sr)) == 0);
 }
 
-void Duff_In_Love_1()
+int DuffInLoveBruteForce(int n)
 {
-    vector<ll> Divs;
-    void GetDivisors(ll n)
-    {
-        ll i;
-        for (i = 1; i*i <= n; i++)
-        {
-            if (n%i == 0)
-            {
-                Divs.push_back(i);
-                Divs.push_back(n / i);
-            }
+    vector<int> divisors = getDivisors(n);
+    sort(divisors.rbegin(), divisors.rend());
+
+    for (auto divisor: divisors) {
+        vector<int> tempDivisors = getDivisors(divisor);
+        
+        bool fail = 0;
+        for (auto j : tempDivisors) {
+            if (j != 1 && isPerfectSquare(j))
+                fail = 1;
         }
 
-        if (i*i == n)
-            Divs.push_back(i);
-        sort(Divs.rbegin(), Divs.rend());
-    }
-    bool Ok(ll n)
-    {
-        ll i;
-        if (isPerfectSquare(n)) return 0;
-        for (i = 1; i*i <= n; i++)
-        {
-            if (n%i == 0) // if (i) is a divisor
-            if (((i != 1) && isPerfectSquare(i)) || ((i != 1) && isPerfectSquare(n / i)))
-            return 0;
+        if (!fail) {
+            return divisor;
         }
-        return 1;
     }
+    
 }
 ```
 
