@@ -134,6 +134,9 @@ void divCountAllOptimized(int n)
 
 Link: <https://codeforces.com/problemset/problem/577/A>
 
+![times-table](https://user-images.githubusercontent.com/40190772/115963677-ade5ff00-a520-11eb-8f3c-432eee5ad139.png)
+
+
 #### Brute force solution
 
 ```cpp
