@@ -1,8 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// We take the highest degree if we have a polynomial equation.
+/**
+ *
+ * * Problem
+ * [1] Our main problem is to measure the algorithm performance => Space + Time.
+ * [2] We need to compare these algorithms to get the best algorithm.
+ *
+ */
+
+/** 
+ * * Solution
+ * [1] Complexity analysis using Exact time.
+ *   • It depends on the machine performance.
+ *   • IPC (Instructions per cycle) is machine dependent.
+ *   • CPU frequency varies even with same IPC.
+ * 
+ * 
+ * [2] Complexity analysis using no. of steps and no. of operations.
+ *   • It is not practical in calculations.
+ * 
+ * 
+ * [3] Complexity analysis using Worst, Average, Best case.
+ *   • We are interested in the worst case scenario
+ *   • e.g. Search for a number in an array of size n.
+ *   • 5 9 3 4 2 98 7 81 62 10
+ * 
+ * 
+ *   • Best case => 5 | 9
+ *   • Average case => 98 | 7 | 2
+ *   • Worst case => 62 | 10
+ **/
+
+
+/**
+ * * Note
+ *   1s takes 10^8 operations
+ **/
+
+
+// * General Rule
+// Worst Case = The highest degree if we have a polynomial equation.
 // Time = 3 * N^2 + 5 * N + 10 -> O(N^2)
+
 
 // Constant Order
 // O(1)
