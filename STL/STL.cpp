@@ -13,16 +13,14 @@ void learn__about__vectors() {
      * * vector<data_type> name
      */
 
-    int n;
-    cin >> n;
+    int n = 4;
     vector<int> a(n);
 
     for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-
+    
     /**
-     *
      * ^ fancy way of reading vector data
      */
     for (int& i : a) {
@@ -40,9 +38,14 @@ void learn__about__vectors() {
     for (int i = 0; i < n; i++) {
         int x;
         cin >> x;
-
+        
         b.push_back(x);
     }
+
+    /**
+     * ^ pop_back() : pop or remove elements from a vector from the back
+     */
+    a.pop_back();  // a = [1, 2, 3]
 
     /**
      * ^ size() : returns the number of elements in the vector
@@ -62,7 +65,7 @@ void learn__about__vectors() {
      * ^ front() : returns the first element in the vector
      *
      * e.g.
-     * a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+     * a = [1, 2, 3, 4]
      */
     cout << a.front() << endl;  // 1
 
@@ -70,18 +73,12 @@ void learn__about__vectors() {
      * ^ back() : returns the last element in the vector
      *
      * e.g.
-     * a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+     * a = [1, 2, 3, 4]
      */
     cout << a.back() << endl;  // 10
 
     /**
-     * ^ pop_back() : pop or remove elements from a vector from the back
-     */
-    a.pop_back();  // a = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-    /**
-     * ^ begin() : returns an iterator pointing to the first element in the
-     * vector
+     * ^ begin() : returns an iterator pointing to the first element in the vector
      */
     auto it = a.begin();
     cout << *it << endl;  // access its value
@@ -95,21 +92,71 @@ void learn__about__vectors() {
     }
 
     /**
-     * ^ insert() : inserts new elements before the element at the specified
-     * position
-     */
-
-    a.insert(a.begin() + 2, 5);
-
-    /**
      * ^ erase() : removes elements from the specified position
      */
-    a.erase(a.begin());
+    a.erase(a.begin() + i);
 
     /**
      * ^ clear() : removes all the elements of the vector container
      */
     a.clear();
+}
+
+void learn__about__stacks() {
+    /**
+     * ^ declaring a new stack object
+     *
+     *          template
+     *           |
+     * * stack<data_type> name;
+     */
+    stack<int> s__int;
+    stack<double> s__double;
+
+    /**
+     * ^ push(x) : adds the element ‘x’ at the top of the stack
+     */
+
+    int x;
+    cin >> x;
+    s__int.push(x);
+
+     /**
+     *  ^ pop() : deletes the top most element of the stack
+     *
+     * e.g.
+     * s = [1, 2, 3, 4, 5, 6]
+     */
+
+    s__int.pop();  // s = [1, 2, 3, 4, 5]
+
+    /**
+     * ^ size() : returns the number of elements in the stack
+     */
+    cout << s__int.size() << endl;
+
+    /**
+     * ^ empty() : returns whether the stack is empty or not
+     */
+    if (s__int.empty()) {
+        cout << "our stack is empty" << endl;
+    } else {
+        cout << "we have some elements 🎉🎉" << endl;
+    }
+
+    /**
+     * ^ top() : returns a reference to the top most element of the stack
+     */
+
+    cout << s__int.top() << endl;  // 5
+
+    /**
+     * ^ to clear the stack content (there is no clear function)
+     */
+    while (!s__int.empty()) {
+        int t = s__int.top();
+        s__int.pop();
+    }
 }
 
 void learn__about__queues() {
@@ -122,20 +169,6 @@ void learn__about__queues() {
 
     queue<int> q__int;
     queue<double> q__double;
-
-    /**
-     * ^ empty() : returns whether the queue is empty
-     */
-    if (q__int.empty()) {
-        cout << "our queue is empty" << endl;
-    } else {
-        cout << "we have some elements 🎉🎉" << endl;
-    }
-
-    /**
-     * ^ size() : returns the number of elements in the queue
-     */
-    cout << q__int.size() << endl;
 
     /**
      *
@@ -160,6 +193,20 @@ void learn__about__queues() {
      *         start
      */
     q__int.pop();
+
+    /**
+     * ^ empty() : returns whether the queue is empty
+     */
+    if (q__int.empty()) {
+        cout << "our queue is empty" << endl;
+    } else {
+        cout << "we have some elements 🎉🎉" << endl;
+    }
+
+    /**
+     * ^ size() : returns the number of elements in the queue
+     */
+    cout << q__int.size() << endl;
 
     /**
      * ^ front() : returns the first element of the queue
@@ -190,6 +237,16 @@ void learn__about__sets() {
     int x;
     cin >> x;
     st__int.insert(x);
+
+    /**
+     * ^ erase(x) : Removes the value ‘x’ from the set
+     */
+    st__int.erase(15);
+
+    /**
+     * ^ erase(x) : Removes the value ‘x’ from the set
+     */
+    st__int.erase(st__int.begin());
 
     /**
      * ^ empty() : returns whether the set is empty
@@ -227,16 +284,6 @@ void learn__about__sets() {
     for (auto it : st__int) {
         cout << it << endl;
     }
-
-    /**
-     * ^ erase(x) : Removes the value ‘x’ from the set
-     */
-    st__int.erase(15);
-
-    /**
-     * ^ erase(x) : Removes the value ‘x’ from the set
-     */
-    st__int.erase(st__int.begin());
 }
 
 void learn__about__maps() {
@@ -269,6 +316,20 @@ void learn__about__maps() {
     mp__string__int["Hemdan"] = 22;
 
     /**
+     * ^ size() : returns the number of elements in the map
+     */
+    cout << mp__int__int.size() << endl;
+
+    /**
+     * ^ empty() : returns whether the map is empty
+     */
+    if (mp__int__int.empty()) {
+        cout << "our map is empty" << endl;
+    } else {
+        cout << "we have some elements 🎉🎉" << endl;
+    }
+
+    /**
      * ^ begin() : returns an iterator pointing to the first element in the map
      */
 
@@ -293,143 +354,15 @@ void learn__about__maps() {
     }
 
     /**
-     * ^ size() : returns the number of elements in the map
-     */
-    cout << mp__int__int.size() << endl;
-
-    /**
-     * ^ empty() : returns whether the map is empty
-     */
-    if (mp__int__int.empty()) {
-        cout << "our map is empty" << endl;
-    } else {
-        cout << "we have some elements 🎉🎉" << endl;
-    }
-
-    /**
      * ^ clear() : removes all the elements of the map
      */
     mp__int__int.clear();
 }
 
-void learn__about__stacks() {
-    /**
-     * ^ declaring a new stack object
-     *
-     *          template
-     *           |
-     * * stack<data_type> name;
-     */
-    stack<int> s__int;
-    stack<double> s__double;
-
-    /**
-     * ^ empty() : returns whether the stack is empty or not
-     */
-    if (s__int.empty()) {
-        cout << "our stack is empty" << endl;
-    } else {
-        cout << "we have some elements 🎉🎉" << endl;
-    }
-
-    /**
-     * ^ push(x) : adds the element ‘x’ at the top of the stack
-     */
-
-    int x;
-    cin >> x;
-    s__int.push(x);
-
-    /**
-     * ^ size() : returns the number of elements in the stack
-     */
-    cout << s__int.size() << endl;
-
-    /**
-     *  ^ pop() : deletes the top most element of the stack
-     *
-     * e.g.
-     * s = [1, 2, 3, 4, 5, 6]
-     */
-
-    s__int.pop();  // s = [1, 2, 3, 4, 5]
-
-    /**
-     * ^ top() : returns a reference to the top most element of the stack
-     */
-
-    cout << s__int.top() << endl;  // 5
-
-    /**
-     * ^ to clear the stack content (there is no clear function)
-     */
-    while (!s__int.empty()) {
-        int t = s__int.top();
-        s__int.pop();
-    }
-}
-
-void learn__about__priority__queue() {
-    /**
-     * ^ declaring a new priority queue object
-     *
-     *          template
-     *           |
-     * * priority_queue<data_type> name;
-     * ! sort descending by default
-     */
-
-    priority_queue<int> pq;  // 1 8 2 9 4 7 6 =====> 9 8 7 6 4 2 1
-    priority_queue<string, vector<string>, greater<string>>
-        pq__ascend;  // 1 8 2 9 4 7 6 =====> 1 2 4 6 7 8 9
-
-    /**
-     * ^ empty() : returns whether the priority queue is empty or not
-     */
-    if (pq.empty()) {
-        cout << "our priority queue is empty" << endl;
-    } else {
-        cout << "we have some elements 🎉🎉" << endl;
-    }
-
-    /**
-     * ^ push(x) : adds the element ‘x’ at the end of the priority queue
-     */
-
-    int x;
-    cin >> x;
-    pq.push(x);
-
-    /**
-     * ^ size() : returns the number of elements in the priority queue
-     */
-    cout << pq.size() << endl;
-
-    /**
-     *  ^ pop() : deletes the first element of the priority queue
-     *
-     * e.g.
-     * order of adding = [1, 2, 3, 4, 5, 6]
-     */
-    pq.pop();  // [2, 3, 4, 5, 6]
-
-    /**
-     * ^ top() : returns a reference to the top most element of the priority
-     * ^ queue
-     */
-
-    cout << pq.top() << endl;  // 1
-
-    /**
-     * ^ to clear the stack content (there is no clear function)
-     */
-    while (!pq.empty()) {
-        int t = pq.top();
-        pq.pop();
-    }
-}
-
 void learn__about__stl__algorithms() {
+     /**
+     * ^ sort(start it, end it) : sort your array / vector
+     */
     const int N = 100000;
     int a[N];
 
@@ -438,52 +371,8 @@ void learn__about__stl__algorithms() {
     int n;
     vector<string> b(n);
 
+    sort(b.begin(), b.end());
     sort(b.rbegin(), b.rend());
-
-    int n;
-    vector<int> c(n);
-
-    sort(c.begin(), c.end());
-
-    /**
-     * ^ binary_search() : return wether a vector has element x or not
-     * ! your array should be sorted
-     */
-    int x;
-    cin >> x;
-    if (binary_search(b.begin(), b.end(), x)) {
-        cout << "found" << endl;
-    } else {
-    }
-
-    /**
-     * ^ lower_bound() : returns an iterator pointing to the first element in
-     * ^ the range which has a value not less than ‘x’
-     *
-     *
-     * ! your array should be sorted
-     */
-
-    int x;
-    cin >> x;
-    auto it = lower_bound(b.begin(), b.end(), x);
-    cout << *it << endl;
-
-    int idx = distance(b.begin(), it);
-
-    /**
-     * ^ upper_bound() : returns an iterator pointing to the first element in
-     * ^ the range which has a value not greater than ‘x’
-     *
-     *
-     * ! your array should be sorted
-     */
-    int x;
-    cin >> x;
-    auto it = upper_bound(b.begin(), b.end(), x);
-    cout << *it << endl;
-
-    int idx = distance(b.begin(), it);
 
     /**
      * ^ reverse(start it, end it) : reverse your array / vector
@@ -492,60 +381,61 @@ void learn__about__stl__algorithms() {
     reverse(b.begin(), b.end());  // Vector
 }
 
-void solve__problem__one() {
+void solve__problem__1() {
+    // https://codeforces.com/group/zvsr84He8w/contest/315331/problem/A
+
     int n;
     cin >> n;
-    vector<int> a(n);
+    
+    vector<int> arr(n);
+    for (int i =0 ; i< n; i++) {
+        cin >> arr[i];
+    }
 
-    for (int& i : a) cin >> i;
-    sort(a.begin(), a.end());
+    sort(arr.begin(), arr.end());
 
-    for (int i = 0; i < n; i++) {
-        cout << a[i] << " \n"[i == n - 1];
+    for (auto i : arr) {
+        cout << i << ' ';
     }
 }
 
-void solve__problem__two() {
+void solve__problem__2() {
+    // Link: https://codeforces.com/group/k43ChfKeWS/contest/353135/problem/C
+    int n, k;
+    cin >> n >> k;
+
+    map<int, int> freq;
+    for (int i = 0, x; i < n; i++) {
+        cin >> x;
+        freq[x] = i + 1;
+    }
+
+    if (freq.size() >= k) {
+        cout << "YES" << endl;
+        
+        auto it = freq.begin();
+        for (int i = 0; i < k; i++)
+            cout << (it++->second) << ' ';
+    } else {
+        cout << "NO";
+    }
+}
+
+void solve__problem__3() {
+    // https://codeforces.com/group/zvsr84He8w/contest/315331/problem/B
     int n;
     cin >> n;
 
-    map<string, int> mp;
-
+    string s;
+    map<string, int> freq;
     for (int i = 0; i < n; i++) {
-        string s;
         cin >> s;
-
-        if (mp[s] > 0) {
-            cout << s << mp[s] << endl;
-        } else {
+        if (freq[s] == 0) {// freq.count(s)
             cout << "OK" << endl;
-        }
-
-        mp[s]++;
-        cout << s << ' ' << mp[s] << endl;
-    }
-}
-
-void solve__problem__three() {
-    int n, m;
-    cin >> n >> m;
-
-    map<string, string> mp;
-
-    for (int i = 0; i < m; i++) {
-        string s1, s2;
-        cin >> s1 >> s2;
-        if (s1.size() <= s2.size()) {
-            mp[s1] = s1;
+            freq[s] = 1;
         } else {
-            mp[s1] = s2;
+            cout << s << freq[s]++ << endl;
         }
-    }
-
-    for (int i = 0; i < n; i++) {
-        string s;
-        cin >> s;
-        cout << mp[s] << " ";
     }
 }
 
