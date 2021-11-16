@@ -50,7 +50,7 @@ void dfs(int cur)
     for(int i=0;i<adjlist[cur].size();i++)
     {
         if(vis[adjlist[cur][i]]==0)
-            dfs(cur);
+            dfs(adjlist[cur][i]);
     }
 }
 
