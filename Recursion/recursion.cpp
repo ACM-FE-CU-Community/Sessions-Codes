@@ -1,4 +1,5 @@
 // ^ Recursion ^ \\
+// * a function is said to be recursive if it calls itself.
 
 /*
     & for better comment highlighting
@@ -14,10 +15,16 @@ using namespace std;
 
 // & Let us revise some functions basics 
 
+int func(int b) {
+    // do any thing
+}
+
 int decrease(int a) {
     // ? what is the difference between the next 2 lines ?
-    return a - 1;
-    return --a;
+    func(a - 1); // func(4)
+    func(--a); // func(4)
+
+    // Any extra code here
 }
 
 
@@ -29,7 +36,8 @@ int decrease(int a) {
 // ^ Example 1
 
 
-// ? what is the next 4 functions do?
+// ? what is the next 3 functions do?
+// ? f3(5)
 
 int f1(int n)
 {
@@ -50,9 +58,6 @@ int f3(int n)
 
 
 
-
-
-
 // the above 3 functions are doing the same thing
 // ? so, do we need to repeat the same code again in every function ?
 // ^ no, let the function just call itself like the following
@@ -60,9 +65,15 @@ int f3(int n)
 
 
 
+
 int f(int n) {
     return n * f(n - 1);
 }
+
+
+
+
+
 
 
 
