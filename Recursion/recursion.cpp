@@ -62,13 +62,13 @@ int f3(int n)
 // ? so, do we need to repeat the same code again in every function ?
 // ^ no, let the function just call itself like the following
 
-
-
-
+// f(5)
 
 int f(int n) {
     return n * f(n - 1);
 }
+
+
 
 
 
@@ -85,7 +85,8 @@ int f(int n) {
     ^ so, we need to stop it, hmmmmmm, let's try putting a condition at the start of it
 */
 
-
+// f(5)
+// 5 * 4 * 3 * 2 * 1
 
 int f(int n) {
     if (n <= 1) 
@@ -98,6 +99,7 @@ int f(int n) {
 /* 
     ^ with this modification, the function will call itself until reaching 1
     ^ after reaching 1, it will stop calling itself and return 1
+
     & and this condition is called "base condition": the condition that stops the recursion calls
     & and function parameters (n) are called "state": the current state of our variables in the recursion calls
 
@@ -118,9 +120,20 @@ int f(int n) {
 *****
 
 ? how can we draw this shape? 
-^ we can use some loops to draw it, but we want to use recursion 
-
+^ we can use some loops to draw it, but we want to use recursion
 */
+
+int draw_triangle_iterative(int depth = 5) {
+    for(int i = 1; i <= depth; i++) {
+        for (int j = 1; j <= i ; j++) {
+            cout << '*';
+        }
+
+        cout << endl;
+    }
+}
+
+
 
 void draw_triangle(int depth = 5) {
     // ^ base condition
@@ -128,13 +141,14 @@ void draw_triangle(int depth = 5) {
         return;
     }
 
-    // ! draw_triangle(depth--);
-    draw_triangle(depth - 1);
-
     for (int i = 0; i < depth; i++) {
         cout << "*";
     }
     cout << endl;
+    
+    // ! draw_triangle(depth--);
+    draw_triangle(depth - 1);
+
 }
 
 
@@ -146,7 +160,7 @@ void draw_triangle(int depth = 5) {
 
 void draw_triangle(int depth = 5) {
     // ^ base condition
-    if (depth == 0) {
+    if (depth <= 0) {
         return;
     }
 
@@ -163,7 +177,6 @@ void draw_triangle(int depth = 5) {
 // ^ Example 3
 
 
-
 // ^ recursion with more than one call
 /*
     & starting from the top left corner, return the path with the max sum reaching the bottom right corner\
@@ -178,16 +191,8 @@ void draw_triangle(int depth = 5) {
 */
 
 
-
-
-
-
-
-
-
-int n, m;
+const int n = 3, m = 3;
 int grid[n][m];
-
 int maxPathSum(int r, int c)
 {
     // ^ Base condition
@@ -250,7 +255,7 @@ x....
 
 int floodFill(int r, int c) {
     if (!valid(r, c) || grid[r][c] == 'x')
-        return;
+        return 0;
 
     int ans = 0;
     ans += floodFill(r + 1, c); // down
@@ -270,13 +275,12 @@ int floodFill(int r, int c) {
 
 
 
-// * correct implementation * \\
-
+// * correct implementation *
 bool vis[n][m];
 
 int floodFill(int r, int c) {
     if (!valid(r, c) || grid[r][c] == 'x' || vis[r][c])
-        return;
+        return 0;
 
     vis[r][c] = true;
 
@@ -294,4 +298,4 @@ int floodFill(int r, int c) {
 // ^ Problems
 
 // 1. https://vjudge.net/problem/UVA-10344
-// 2. https://vjudge.net/problem/UVA-100    => 
+// 2. https://vjudge.net/problem/UVA-100
