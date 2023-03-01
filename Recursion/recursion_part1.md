@@ -24,7 +24,7 @@ decrease(5);
 ```
 ----------------
 
-## Factorial
+## Exmaple 1: Factorial
 
 ```c++
 factorial(5) = 1 * 2 * 3 * 4 * 5
@@ -107,7 +107,7 @@ factorial(1) = 1
 
 ----------------
 
-## example 2 print array
+## Example 2: print array
 
 ```c++
 int arr[] = {1, 2, 3, 4};
@@ -186,6 +186,64 @@ return;
 cout << arr[0] << " ";
 return;
 ```
+
+----------------
+## Example 3: Fibonacci
+## what is fibonacci series ?
+```c++
+0 1 1 2 3 5 8 13 21 ......
+```
+```c++
+f(0) = 0
+f(1) = 1
+f(n) = f(n-1) + f(n-2)
+```
+
+```c++
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+```
+## trace
+```c++
+if we call fibonacci(5) we will get the following calls
+      5
+    /   \
+   4     3
+  / \   / \
+  3  2  2  1
+ /\ /\  /\ /\
+2 1 1 0 1 0  0
+/\ 
+1 0
+```
+
+```c++
+int fibonacci(int n) {
+    if (n == 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+    // first call
+    int f1 = fibonacci(n - 1);
+    // second call
+    int f2 = fibonacci(n - 2);
+    // return the sum of the two calls
+    return f1 + f2;
+}
+```
+
+## what is the time complexity of this solution ?
+
+----------------
 
 ## problem 1
 https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/K
