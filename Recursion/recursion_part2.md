@@ -234,3 +234,11 @@ sol 2: https://www.ideone.com/aG2jrA
 https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/Y
 ## sol
 https://www.ideone.com/HP92qB
+
+----------------
+----------------
+----------------
+----------------
+
+# Contest
+https://codeforces.com/group/gA8A93jony/contests
