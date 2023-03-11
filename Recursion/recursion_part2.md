@@ -95,10 +95,10 @@ the Answer is 6 -> take first and second items
 .
 
 ```
-001 ->take first item
+100 ->take first item
 010 ->take second item
-011 ->take first and second items
-100 ->take third item
+110 ->take first and second items
+001 ->take third item
 101 ->take first and third items
 and so on
 ```
