@@ -95,10 +95,10 @@ the Answer is 6 -> take first and second items
 .
 
 ```
-001 ->take first item
+100 ->take first item
 010 ->take second item
-011 ->take first and second items
-100 ->take third item
+110 ->take first and second items
+001 ->take third item
 101 ->take first and third items
 and so on
 ```
@@ -234,3 +234,18 @@ sol 2: https://www.ideone.com/aG2jrA
 https://codeforces.com/group/MWSDmqGsZm/contest/223339/problem/Y
 ## sol
 https://www.ideone.com/HP92qB
+
+----------------
+
+## problem 4
+https://codeforces.com/group/gA8A93jony/contest/270592/problem/C
+## sol
+
+
+----------------
+----------------
+----------------
+----------------
+
+# Contest
+https://codeforces.com/group/gA8A93jony/contests
